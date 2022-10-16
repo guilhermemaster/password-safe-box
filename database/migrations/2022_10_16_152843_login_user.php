@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('louse_login_user', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 200);
+            $table->string('email', 100)->unique();
+            $table->string('password', 50);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('louse_login_user');
     }
 };
